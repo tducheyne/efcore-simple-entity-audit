@@ -55,7 +55,7 @@ namespace EntityFrameworkCore.SimpleEntityAudit.Test.SimpleTimeAudit
             database.Authors.Add(author);
             await saveMethod(database);
 
-            Assert.Equal(clock.ReferenceUtcNow, author.CreatedOn);
+            Assert.Equal(clock.UtcNow, author.CreatedOn);
             Assert.Null(author.LastModifiedOn);
         }
 
@@ -117,7 +117,7 @@ namespace EntityFrameworkCore.SimpleEntityAudit.Test.SimpleTimeAudit
 
             foreach (var author in authors)
             {
-                Assert.Equal(clock.ReferenceUtcNow, author.CreatedOn);
+                Assert.Equal(clock.UtcNow, author.CreatedOn);
                 Assert.Null(author.LastModifiedOn);
             }
         }
@@ -166,14 +166,14 @@ namespace EntityFrameworkCore.SimpleEntityAudit.Test.SimpleTimeAudit
             database.Authors.Add(author);
             database.SaveChanges();
 
-            Assert.Equal(clock.ReferenceUtcNow, author.CreatedOn);
+            Assert.Equal(clock.UtcNow, author.CreatedOn);
             Assert.Null(author.LastModifiedOn);
 
-            author.Name = clock.ReferenceUtcNow.ToShortDateString();
+            author.Name = clock.UtcNow.ToShortDateString();
             await saveMethod(database);
 
-            Assert.Equal(clock.ReferenceUtcNow, author.CreatedOn);
-            Assert.Equal(clock.ReferenceUtcNow, author.LastModifiedOn);
+            Assert.Equal(clock.UtcNow, author.CreatedOn);
+            Assert.Equal(clock.UtcNow, author.LastModifiedOn);
         }
 
         [Fact]
@@ -228,21 +228,21 @@ namespace EntityFrameworkCore.SimpleEntityAudit.Test.SimpleTimeAudit
 
             foreach (var author in authors)
             {
-                Assert.Equal(clock.ReferenceUtcNow, author.CreatedOn);
+                Assert.Equal(clock.UtcNow, author.CreatedOn);
                 Assert.Null(author.LastModifiedOn);
             }
 
             foreach (var author in authors)
             {
-                author.Name = clock.ReferenceUtcNow.ToShortDateString();
+                author.Name = clock.UtcNow.ToShortDateString();
             }
 
             await saveMethod(database);
 
             foreach (var author in authors)
             {
-                Assert.Equal(clock.ReferenceUtcNow, author.CreatedOn);
-                Assert.Equal(clock.ReferenceUtcNow, author.LastModifiedOn);
+                Assert.Equal(clock.UtcNow, author.CreatedOn);
+                Assert.Equal(clock.UtcNow, author.LastModifiedOn);
             }
         }
 
@@ -303,13 +303,13 @@ namespace EntityFrameworkCore.SimpleEntityAudit.Test.SimpleTimeAudit
 
             foreach (var author in existingAuthors)
             {
-                Assert.Equal(clock.ReferenceUtcNow, author.CreatedOn);
+                Assert.Equal(clock.UtcNow, author.CreatedOn);
                 Assert.Null(author.LastModifiedOn);
             }
 
             foreach (var author in existingAuthors)
             {
-                author.Name = clock.ReferenceUtcNow.ToShortDateString();
+                author.Name = clock.UtcNow.ToShortDateString();
             }
 
             database.Authors.AddRange(newAuthors);
@@ -318,13 +318,13 @@ namespace EntityFrameworkCore.SimpleEntityAudit.Test.SimpleTimeAudit
 
             foreach (var author in existingAuthors)
             {
-                Assert.Equal(clock.ReferenceUtcNow, author.CreatedOn);
-                Assert.Equal(clock.ReferenceUtcNow, author.LastModifiedOn);
+                Assert.Equal(clock.UtcNow, author.CreatedOn);
+                Assert.Equal(clock.UtcNow, author.LastModifiedOn);
             }
 
             foreach (var author in newAuthors)
             {
-                Assert.Equal(clock.ReferenceUtcNow, author.CreatedOn);
+                Assert.Equal(clock.UtcNow, author.CreatedOn);
                 Assert.Null(author.LastModifiedOn);
             }
         }

@@ -7,14 +7,12 @@ namespace EntityFrameworkCore.SimpleEntityAudit.Test.SimpleTimeAudit
     {
         private class Clock : IClock
         {
-            public DateTime ReferenceUtcNow { get; }
-
             public Clock()
             {
-                ReferenceUtcNow = DateTime.UtcNow;
+                UtcNow = DateTime.UtcNow;
             }
 
-            public DateTime UtcNow => ReferenceUtcNow;
+            public DateTime UtcNow { get; }
         }
     }
 }
