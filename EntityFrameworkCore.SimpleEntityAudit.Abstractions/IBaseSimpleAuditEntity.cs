@@ -7,9 +7,10 @@ namespace EntityFrameworkCore.SimpleEntityAudit.Abstractions
     }
 
     public interface ISimpleActorAuditEntity<T> : IBaseSimpleAuditEntity
+        where T : struct
     {
         T CreatedBy { get; set; }
-        T LastModifiedBy { get; set; }
+        T? LastModifiedBy { get; set; }
     }
 
     public interface ISimpleTimeAuditEntity : IBaseSimpleAuditEntity
@@ -19,6 +20,7 @@ namespace EntityFrameworkCore.SimpleEntityAudit.Abstractions
     }
 
     public interface ISimpleAuditEntity<T> : ISimpleActorAuditEntity<T>, ISimpleTimeAuditEntity
+        where T : struct
     {
     }
 }

@@ -19,6 +19,7 @@ namespace EntityFrameworkCore.SimpleEntityAudit
             bool applyActorAudit,
             IClock clock = null,
             IActorProvider<T> actorProvider = null)
+            where T : struct
         {
             var auditableEntityEntries = _changeTracker.Entries<IBaseSimpleAuditEntity>();
 
@@ -47,6 +48,7 @@ namespace EntityFrameworkCore.SimpleEntityAudit
         }
 
         private void ApplyActorAudit<T>(EntityEntry<IBaseSimpleAuditEntity> entry, IActorProvider<T> actorProvider)
+            where T : struct
         {
             if (actorProvider == null) throw new ArgumentNullException(nameof(actorProvider));
             if (!(entry.Entity is ISimpleActorAuditEntity<T> simpleTimeAuditEntity)) return;
