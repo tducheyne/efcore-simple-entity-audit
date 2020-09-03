@@ -11,7 +11,7 @@ namespace Microsoft.EntityFrameworkCore
         private readonly IActorProvider<T> _actorProvider;
         private readonly IClock _clock;
 
-        protected SimpleAuditDbContext(DbContextOptions<SimpleAuditDbContext<T>> options, IActorProvider<T> actorProvider, IClock clock)
+        protected SimpleAuditDbContext(DbContextOptions options, IActorProvider<T> actorProvider, IClock clock)
             : base(options)
         {
             _auditor = new Auditor(ChangeTracker);

@@ -10,7 +10,8 @@ namespace Microsoft.EntityFrameworkCore
         private readonly Auditor _auditor;
         private readonly IActorProvider<T> _actorProvider;
 
-        protected SimpleActorAuditDbContext(IActorProvider<T> actorProvider)
+        protected SimpleActorAuditDbContext(DbContextOptions options, IActorProvider<T> actorProvider)
+            : base(options)
         {
             _auditor = new Auditor(ChangeTracker);
             _actorProvider = actorProvider;
