@@ -19,28 +19,28 @@ namespace Microsoft.EntityFrameworkCore
 
         public override int SaveChanges()
         {
-            _auditor.ApplyAudit<object>(true, false, clock: _clock, actorProvider: null);
+            _auditor.ApplyAudit<int>(true, false, clock: _clock, actorProvider: null);
 
             return base.SaveChanges();
         }
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
         {
-            _auditor.ApplyAudit<object>(true, false, clock: _clock, actorProvider: null);
+            _auditor.ApplyAudit<int>(true, false, clock: _clock, actorProvider: null);
 
             return base.SaveChanges(acceptAllChangesOnSuccess);
         }
 
         public override Task<int> SaveChangesAsync(bool acceptAllChangesOnSuccess, CancellationToken cancellationToken = default)
         {
-            _auditor.ApplyAudit<object>(true, false, clock: _clock, actorProvider: null);
+            _auditor.ApplyAudit<int>(true, false, clock: _clock, actorProvider: null);
 
             return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
-            _auditor.ApplyAudit<object>(true, false, clock: _clock, actorProvider: null);
+            _auditor.ApplyAudit<int>(true, false, clock: _clock, actorProvider: null);
 
             return base.SaveChangesAsync(cancellationToken);
         }

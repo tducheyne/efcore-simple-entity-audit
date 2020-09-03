@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 namespace Microsoft.EntityFrameworkCore
 {
     public abstract class SimpleActorAuditDbContext<T> : DbContext
+        where T : struct
     {
         private readonly Auditor _auditor;
         private readonly IActorProvider<T> _actorProvider;
