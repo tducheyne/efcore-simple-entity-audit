@@ -6,7 +6,7 @@ using Xunit;
 
 namespace EntityFrameworkCore.SimpleEntityAudit.Test.SimpleActorAudit
 {
-    public class SimpleActorAuditTests
+    public partial class SimpleActorAuditTests
     {
         [Fact]
         public async Task Single_New_SaveChanges()
@@ -336,35 +336,6 @@ namespace EntityFrameworkCore.SimpleEntityAudit.Test.SimpleActorAudit
                 .Options;
 
             return new AuditDbContext(options, actorProvider);
-        }
-
-        private class AuditDbContext : SimpleActorAuditDbContext<int>
-        {
-            public DbSet<Author> Authors { get; set; }
-
-            public AuditDbContext(DbContextOptions options, IActorProvider<int> actorProvider)
-                : base(options, actorProvider)
-            {
-            }
-        }
-
-        private class Author : ISimpleActorAuditEntity<int>
-        {
-            public Guid MyProperty { get; set; }
-
-            public int Id { get; set; }
-            public string Name { get; set; }
-
-            public int CreatedBy { get; set; }
-            public int? LastModifiedBy { get; set; }
-        }
-
-        private class ActorProvider : IActorProvider<int>
-        {
-            public int Provide()
-            {
-                return 999;
-            }
         }
     }
 }
