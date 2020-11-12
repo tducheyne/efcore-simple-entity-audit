@@ -2,6 +2,12 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/tducheyne/efcore-simple-entity-audit</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/tducheyne/efcore-simple-entity-audit</RepositoryUrl>
+    <Authors>Thomas Ducheyne</Authors>
+    <Copyright>Thomas Ducheyne © 2020</Copyright>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,6 +16,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EntityFrameworkCore.SimpleEntityAudit.Abstractions\EntityFrameworkCore.SimpleEntityAudit.Abstractions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
